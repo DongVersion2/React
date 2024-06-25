@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.so String
+        // 2. join
+        // 3. pop
+        // 4. push
+        // 5. shift
+        // 6. unshift
+        // 7. splice
+        // 8. concat
+        // 9. slice
+
+        var languagues = [
+            "PHP",
+            "JAVA",
+            "JAVASCRIPT",
+            "HTML",
+            "CSS",
+            "SCSS",
+        ]
+
+        var languages2 = [
+            "Dart",
+            "Ruby",
+            "Hibernate",
+            "JDBC",
+        ]
+
+        //chuyển mảng thành chuỗi
+        console.log(languagues.toString());
+
+        //join
+        console.log(languagues.join(' - '));
+
+        //pop-xóa cuỗi mảng và trả về cái bị xóa
+        console.log(languagues.pop());
+
+        //push - thêm phần tử cuối mảng và trả về độ  dài mảng
+        console.log(languagues.push('SPRING BOOT'));
+
+        //shift - xóa phần tử đầu mảng và trả về phần tự bị xóa
+        console.log(languagues.shift());
+
+        //unshift - thêm 1 hoặc nhiều phần tử đầu mảng
+        console.log(languagues.unshift('haha', 'hoho'));
+
+        //splice - xóa ở vị trí tùy chọn - tham số thứ 3 là để chèn
+        console.log(languagues.splice(1, 2));
+        console.log(languagues.splice(1, 2, 'kkkk'));
+
+        //concat - để nối 
+        console.log(languagues.concat(languages2));
+
+        //slice - tác dụng để cắt mảng
+        console.log(languages2.slice(1, 2));
+        
+    </script>
+</body>
+</html>

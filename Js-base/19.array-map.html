@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+ // //các loại thao tác trong array
+        // Array method: 
+        //     foreach()//duyệt qua từng phần tử
+        //     every()//kiểm tra tất cả phần tử phải thõa mãn điều kiện nào đó
+        //     some()//ktra 1 phần tử đúng là được, return true ngay
+        //     find(),//để tìm kiếm, và chỉ trả về duy nhất 1 kqua
+        //     filter(),//tìm kiếm , kết quả ra nhiều đáp án 
+        //     map(),//map chỉnh sửa element của array, MAP ĐƯỢC SỬ DỤNG RẤT NHIỀU
+        //     reduce(), //muốn nhận về 1 giá trị duy nhất
+        //TẤT CẢ CÁC HÀM TRÊN ĐỀU DỰA TRÊN YẾU TỐ VÒNG LẶP, NHƯNG DÙNG CÁCH MỚI SẼ NGẮN GỌN HƠN
+        var courses = [
+            {
+                id: 1,
+                name: 'javascript',
+                coin: 200
+            },
+            {
+                id: 2,
+                name: 'HTML, CSS',
+                coin: 100,
+            },
+            {
+                id: 3,
+                name: 'PHP',
+                coin: 0,
+            },
+            {
+                id: 4,
+                name: 'PHP',
+                coin: 1,
+            },
+            {
+                id: 5,
+                name: 'NodeJS',
+                coin: 1,
+            },
+        ];
+
+        //call back
+        //foreach duyệt qua từng phần tử
+        // courses.forEach(function(course, index) {
+        //     console.log(index, course);
+        // });
+
+        //every() kiểm tra tất cả phần tử phải thõa mãn điều kiện nào đó
+        //return kiểu boolean
+        var isFee = courses.every(function (course, index) {
+            return course.coin === 0;
+            // console.log(index, course);
+        });
+        console.log(isFee);
+        //kiểm tra số 1 mà đúng thì mới ktra số 2
+        // sai là dừng ngay, ko duyệt qua tất cả phần tử
+
+        //some chỉ cần 1 điều kiện đúng sẽ trả về true ngay
+        var isFee1 = courses.some(function (course, index) {
+            return course.coin === 0;
+            // console.log(index, course);
+        });
+        console.log(isFee1);
+
+        //find để tìm kiếm, nhưng tìm từ trên xuống, gặp đúng là dừng ngay, ko tìm phía dưới nữa
+        //(ví dụ tìm tên trong điện thoại, chỉ cần nhập 1 2 số đầu là tìm được)
+        var course = courses.find(function (course, index) {
+            return course.name === 'PHP';
+            // console.log(index, course);
+        });
+        console.log(course);
+
+        //filter tìm kiếm , kết quả ra nhiều đáp án 
+        var course1 = courses.filter(function (course, index) {
+            return course.name === 'PHP';
+            // console.log(index, course);
+        });
+        console.log(course1);
+
+        console.log('phần map');
+        //map chỉnh sửa element của array
+        //BÀI TOÁN SỬA THÊM CHỮ "KHÓA HỌC" TRƯỚC NAME, VÀ THÊM TRƯỜNG MỚI...
+        //var courseHandler = function() {};làm ntn cũng đc
+        function courseHandler(course, index) {
+            return {
+                id: course.id,
+                name: `Khoa hoc: ${course.name}`,
+                coin: course.coin,
+                coinText: `Gia: ${course.coin}`,
+                index: index,
+            };
+        }
+        //hàm viết ngoài rồi gọi vào cũng được
+        var newCourses = courses.map(courseHandler);
+        console.log(newCourses);
+        //hàm courseHandler duyệt qa từng phần tử của mảng
+        //lần 1 duyệt qua element1 sau đó quay lại hàm truyền vào cho nó, tiếp theo y chang
+        //hàm courseHalder trả về cái gì thì newcourses sẽ nhận cái đó
+
+
+        //nếu chỉ muốn lấy tên khóa học thì làm ntn
+        // function courseHandler(course, index) {
+        //     return course.name;
+        // }
+        console.log('sử dụng reduce')
+        console.log('vòng for of thường')
+        var a = 0;//biến lưu trữ
+        for (var course of courses) {//lặp qua các phần tử
+            a += course.coin; //thực hiện lưu trữ
+        }
+        console.log(a);
+
+        //CHƯA HIỂU LẮM
+        console.log('dùng reduce');
+        //accumulator là biến lưu trữ
+        //yêu cầu tính tổng coin
+        function coinHandler(accumulator, currentValue, currentIndex, originArray) {
+            return accumulator + currentValue.coin;
+        }
+        var totalCoin = courses.reduce(coinHandler, 0);//0 ở đây là giá trị của biến khởi tạo, thường bằng 0
+        console.log(totalCoin);
+
+        //cách giải thích cho ví dụ trên
+        var i = 0;
+        function coinHandler1(accumulator, currentValue, currentIndex, originArray) {
+            i++;
+            var total = accumulator + currentValue.coin;
+            console.table({
+                'lượt chạy: ': i,
+                'biến tích trữ: ': accumulator,
+                'giá khóa học: ': currentValue.coin,
+                'tích trữ được: ': total,
+
+            });
+            return total;
+        }
+
+        var totalCoin1 = courses.reduce(coinHandler1, 0);
+        console.log(totalCoin1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function writeLog (message1, message2) {
+            console.log(message1);
+            console.log(message2);
+         }
+         writeLog(123);
+
+         console.log('ví dụ 2');
+
+         function writeDemo () {
+            var myString = '';
+            for (var param of arguments) {
+                myString += `${param} - `;
+            }
+            console.log(myString);
+         }
+
+         writeDemo('log 1', 'log 2', 'log 3', 'log 4, 'log 5');
+
+    </script>
+</body>
+</html>

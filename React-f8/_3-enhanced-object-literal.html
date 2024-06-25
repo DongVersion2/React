@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    công dụng của enhanced object literal
+    - định nghĩa key: value cho object
+    - định nghĩa method cho object
+    - định nghĩa key cho object dưới dạng biến
+    <script>
+        var name = 'javascript';
+        var price = 1000
+
+        // cách cổ điển
+        var course = {
+            name: name,
+            price: price
+        }
+        console.log(course);
+
+        // cách viết rút gọn của enanhced Object
+        // định nghĩa key: value cho object
+        var course2 = {
+            name,
+            price
+        }
+        console.log(course2);
+
+        //định nghĩa method cho object
+        var course3 = {
+            name,
+            price,
+            getName() {
+                return name;
+            }
+        }
+        console.log(course3.getName());
+
+        //định nghĩa key cho object dưới dạng biến
+        var fiedName = 'name';
+        var fieldPrice = 'price';
+
+        const course4 = {
+            [fiedName]: 'javascript',//ở đây [fieldName] nó ăn theo giá trị của 'name' phía trên
+            [fieldPrice]: 'price'
+        };
+        console.log(course4);
+    </script>
+</body>
+</html>

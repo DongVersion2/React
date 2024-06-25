@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- chưa code -->
+    <script>
+        // //các loại thao tác trong array
+        // Array method: 
+        //     foreach()//duyệt qua từng phần tử
+        //     every()//kiểm tra tất cả phần tử phải thõa mãn điều kiện nào đó
+        //     some()//ktra 1 phần tử đúng là được, return true ngay
+        //     find(),//để tìm kiếm, và chỉ trả về duy nhất 1 kqua
+        //     filter(),//tìm kiếm , kết quả ra nhiều đáp án 
+        //     map(),//map chỉnh sửa element của array, MAP ĐƯỢC SỬ DỤNG RẤT NHIỀU
+        //     reduce(), //muốn nhận về 1 giá trị duy nhất
+        //TẤT CẢ CÁC HÀM TRÊN ĐỀU DỰA TRÊN YẾU TỐ VÒNG LẶP, NHƯNG DÙNG CÁCH MỚI SẼ NGẮN GỌN HƠN
+
+        var courses = [
+            {
+                id: 1,
+                name: 'javascript',
+                coin: 200
+            },
+            {
+                id: 2,
+                name: 'HTML, CSS',
+                coin: 100,
+            },
+            {
+                id: 3,
+                name: 'PHP',
+                coin: 0,
+            },
+            {
+                id: 4,
+                name: 'PHP',
+                coin: 1,
+            },
+            {
+                id: 5,
+                name: 'NodeJS',
+                coin: 1,
+            },
+        ];
+
+        //callback function: là gọi 1 hàm dưới dạng tham số
+        // foreach duyệt qua từng phần tử
+            courses.forEach(function(course, index) {
+                console.log(index, course);
+            });
+
+            console.log('---------------every');
+            //every kiểm trả tất cả phần tử phải thỏa mãn điều kiện nào đó
+            //return kiểu boolean
+            //kiểm tra số 1 đúng thì mới kiểm tra số 2
+            //sai là dừng lại ngay, ko duyệt qua tất cả phần tử
+            var isFee = courses.every(function(course, index) {
+                return course.coin === 0;
+                // console.log(index, course);
+            });
+            console.log(isFee);
+
+            console.log('-------------------some');
+            //some chỉ cần 1 điều kiện đúng sẽ trả về true ngay
+            var isFee1 = courses.some(function(course, index) {
+                return course.coin ===0;
+                console.log(index, course, 'aaaa');
+            })
+            console.log(isFee1);
+
+            console.log('----------------find');
+            //find để tìm kiếm, nhưng tìm từ trên xuống, gặp đúng là dừng ngay, ko tìm phía dưới nữa
+            //ví dụ tìm tên trong điện thoại, chỉ cần nhập 1 2 số đầu là tìm được
+            var course = courses.find(function(course, index) {
+                return course.name === 'PHP';
+            });
+            console.log(course);
+
+            console.log('-----------------------fitter');
+            //fitter tìm kiếm, kết quả ra nhiều đáp án
+            var listCourse = courses.filter(function(course, index) {
+                return course.name === 'PHP';
+            });
+            console.log(listCourse);
+
+            
+    </script>
+</body>
+
+</html>

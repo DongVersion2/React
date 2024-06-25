@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    theo ES6 JSX
+        <!-- từ react tạo ra html -->
+     <!-- <ul>
+        <li>javascript</li>
+        <li>reactjs</li>
+     </ul> -->
+     <div id="root"></div>
+     <script type="text/babel">
+        const reactCourse = 'React F8';
+        const uls = <ul>
+            <li>JS</li>
+            <li>React</li>
+            </ul>
+            ReactDOM.render(uls, document.getElementById('root'));
+            console.log(ReactDOM);
+     </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // Destructuring-phá hủy
+        // là gán giá trị từ một cấu trúc dữ liệu phức tạp (như một object hoặc mảng) vào các biến riêng lẻ
+
+        //cách cũ
+        //dạng mảng
+        var array = ['php', 'java', 'ruby'];
+        var a = array[0];
+        var b = array[1];
+        var c = array[2];
+        document.write(a, b, c);
+        console.log(a, b, c);
+
+        //cách mới với Destructuring
+        var array2 = ['php', 'java', 'ruby', 'haha', 'hihi', 'hoho'];
+        var [a2, b2, c2, ...rest] = array2;
+        console.log(a2, b2, c2);
+        console.log(a2, b2, c2, ...rest);//rest ở đây gọi là rest parameters, nghĩa là lấy ra những phần còn lại, rest kết hợp với destructuring
+        //object thì sử dụng móc {}, array thì sử dụng []
+
+
+        //dạng object
+        var course = {
+            name: 'javascrip',
+            price: 1000,
+            children: {
+                name: 'reactjs',
+            },
+            description: 'description value',
+        }
+        // name: parentName tên key trùng nhau nên phải đặt tên bí danh alias
+        var { name: parentName, price, children: { name } } = course;//name là key, phải trùng với object
+        console.log(parentName, price, name);
+
+        //khi có description thì nó lấy giá trị value có sẵn
+        //ko có thì lấy giá trị mặc định (được giả định)
+        var { description = 'default description' } = course;
+        console.log(description);
+
+        // phân biệt, cái ni là toán tử rest đó
+        //khi truyền như này nó ra kq là mảng
+        function logger(...params) {
+            console.log(params);
+        }
+
+        console.log(logger(1, 2, 3, 4, 5, 6, 7, 8));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //đối tượng date
+        var date = new Date();
+
+        //kiểu dữ liệu của nó
+        // console.log(typeof date);
+
+        //hoặc string
+        // console.log(date);
+
+        var year = date.getFullYear();
+        //month phải cộng vào 1 vì mặc định nó là 0-11
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minuties = date.getMinutes();
+        var seconds = date.getSeconds();
+
+
+        console.log(`${hour}:${minuties} ngày ${day}/${month}/${year}`);
+        //trang web : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+    </script>
+
+</body>
+</html>

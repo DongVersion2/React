@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //nested loop - vòng lặp lồng nhau
+        // mảng cha array và có các mảng con phía trong;
+        var myArray = [
+            [1, 2],
+            [3, 4],
+            [5, 6],
+        ];
+
+        for (var i = 0; i < myArray.length; i++) {
+            for (var j = 0; j < myArray[i].length; j++) {
+                console.log(myArray[i][j]);//này để lấy ra giá trị của toàn bộ 3 mảng con trong array
+            }
+        }
+
+        //vòng for cha chạy với i = 0
+        //tiếp tục for con chạy, j = 0 in ra 1, j = 1 in ra 2
+        //xong rồi tiếp tục quay ra for cha , chạy lần 2
+    </script>
+</body>
+</html>

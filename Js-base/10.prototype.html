@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //prototype nghĩa là nguyên mẫu
+        function User(firstName, lastName, avatar) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.avatar = avatar;
+            this.getName = function () {
+                return `${this.firstName} ${this.lastName}`;
+            }
+        }
+
+        //thêm thuộc tính(tức là biến) bên ngoài hàm tạo User
+        User.prototype.className = 'F8';
+        //thêm phương thức
+        User.prototype.getClassName = function() {
+            return this.className;
+        };
+
+        // khởi tạo đối tượng author, user (này là instance như trong java)
+        var user1 = new User('phan', 'dong', 'avatar');
+        var user2 = new User('phan', 'an', 'avatar');
+        // console.log(user.className);
+        console.log(user1.className);
+        console.log(user2.getClassName());
+        </script>
+</body>
+
+</html>

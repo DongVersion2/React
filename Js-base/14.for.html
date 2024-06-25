@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // vòng lặp for - loop
+        // 1. for : lặp với điều kiện đúng
+        // 2. for/in : lặp qua key của đối tượng
+        // 3. for/of : lặp qua value của đối tượng
+        // 4. while : lặp khi điều kiện đúng
+        // 5. do/while : lặp ít nhất 1 lần, sau đó lặp khi điều kiện đúng
+
+        var myArray = [
+            'java',
+            'PHP',
+            'CSS',
+        ];
+        console.log(myArray[2]);
+
+        //////////////////////vòng for thường
+        console.log("vòng for thường")
+        for (let i = 0; i < myArray.length; i++) {
+            console.log(myArray[i]);
+        }
+
+        ////////////////////////vòng for in
+        //kiểu object
+        console.log("vòng for in kiểu object")
+        var myInfor = {
+            name: 'son dang',
+            age: 18
+        }
+        for (var key in myInfor) {
+            console.log(key);//để lấy giá trị key
+            console.log(myInfor[key]);//để lấy values của key
+        }
+        //kiểu mảng
+        console.log("vòng for in kiểu array")
+        var languages = [
+            'java',
+            'PHP',
+            'CSS',
+        ];
+        for (var key in languages) {
+        console.log(key);//key của array là index là số
+            console.log(languages[key]);//để lấy values của key
+        }
+        //kiểu chuỗi
+        console.log("kiểu string");
+        var myString = 'javascript';
+        console.log(myString[2]);//output là v
+
+        //vòng for of
+        //chỉ dùng trong mảng, ko dùng được trong object
+        console.log("vòng for of")
+        var languages1 = [
+            'aaa',
+            'bbb',
+            'ccc',
+        ];
+
+        for (var value of languages1) {
+            console.log(value);
+        }
+
+        //đối với object thì cần làm đi vòng
+        var myInfor1 = {
+            name: 'con lon',
+            age: 99
+        }
+        //console.log(Object.values(myInfor1));//lấy value qua dạng mảng
+        for (var value of Object.values(myInfor1)) {
+            console.log(value);//lấy value qua dạng string
+        }
+
+        //vòng for chạy lùi
+        console.log("vòng for chạy lùi")
+        for (var k = 5; k >0; k--) {
+            console.log(k);
+        }
+
+        console.log("vòng for tăng theo tùy ý")
+        for (var h = 50; h >0; h-=5) {
+            console.log(h);
+        }
+        
+    </script>
+    <script>
+        for(var i = 1; i <= 10; i++) {
+            console.log(i);
+        };
+    </script>
+</body>
+</html>
