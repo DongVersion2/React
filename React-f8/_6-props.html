@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">//type này để nó render biên dịch được cái react-dom lên trên trình duyệt
+        //PostItem.js
+        function PostItem(props) {//thằng này gọi là react component
+            console.log(props);
+            return(//trong cái gọi là react element
+
+                <div className="post-item" style={{ color: "red" }}>
+                    <img style={{ width:300, height:300 }} src={props.image}
+                     alt={props.title} />
+                    <h2 className="post-title">{props.title}</h2>
+                    <p className="post-desc">{props.description}</p>
+                    <p className="post-published">{props.published}</p>
+                </div>
+            )
+        }
+        //App.js
+        function App() {
+            return (
+                <div id="wrapper">
+                    <PostItem 
+                    title="tiêu đề bài viết"
+                    image="https://media.istockphoto.com/id/517188688/vi/anh/phong-c%E1%BA%A3nh-n%C3%BAi-non.jpg?s=1024x1024&w=is&k=20&c=gahEf0tOCv8Cnm4eGE69-n8hCuMfuJokro_ba4Fkt-k="
+                    description="mô tả ngắn"
+                    published="thời gian cập nhật bài đăng"
+                    />
+                </div>
+            )
+        }
+
+        // index.js
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
