@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        //điều kiện để hiển thị với câu lệnh if
+        function MissGoal() {
+            return <h1>MISSED!</h1>;
+        }
+
+        function MadeGoal() {
+            return <h1>GOAL</h1>;
+        }
+
+        function Goal(props) {
+            const isGoal = props.isGoal;
+            if (isGoal) {
+                return <MadeGoal />;
+            }
+            return <MissGoal />;
+        }
+
+        // ReactDOM.render(<Goal isGoal = { false } />, document.getElementById('root'));
+
+        //logical && operator
+        function Garage(props) {
+            const cars = props.cars;
+            return (
+                <>
+                    <h1>Garage</h1>
+                    {cars.length > 0 &&
+                        <h2>
+                            You have {cars.length} cars in your garage.
+                        </h2>
+                    }
+                </>
+            );
+        }
+        const cars = ['Ford', 'BMW', 'Audi'];
+        // ReactDOM.render(<Garage cars={cars} />, document.getElementById('root'));
+
+        //ternary oparator - toán tử bậc 3
+        function MissedGoal2() {
+            return <h1>MISSED!</h1>;
+        }
+
+        function MadeGoal2() {
+            return <h1>GOAL!</h1>;
+        }
+
+        function Goal2(props) {
+            const isGoal = props.isGoal;
+            return (
+                <>
+                    {isGoal ? <MadeGoal2 /> : <MissedGoal2 />}
+                </>
+            );
+        }
+        ReactDOM.render(<Goal2 isGoal={false} />, document.getElementById('root'));
+
+    </script>
+</body>
+
+</html>

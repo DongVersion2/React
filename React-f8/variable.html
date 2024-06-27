@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        //biến var khởi tạo trong block vẫn gọi được ngoài block
+        function examppleVar() {
+
+            if (true) {
+                var varVariable = "This is a var variable";
+            }
+            console.log(varVariable); // In ra được giá trị "This is a var variable"           
+        }
+        examppleVar();
+
+
+
+        //biến let là 1 block scope
+        function exampleLet() {
+            if(true) {
+                let letVariable = "This is a var variable";
+            }
+            //ko gọi được, vì let không sử dụng được ngoài block
+            // console.log(letVariable)
+        }
+        //ko in ra được gì
+        exampleLet();
+
+
+
+        //biến const,là 1 block scope, ko được gán tái khởi tạo, ko đc gán lại
+        function exampleConst() {
+            const constVariable = "abc";
+            console.log(constVariable);
+            // const constVariable = "abcd";
+            // console.log(constVariable);
+        }
+        exampleConst();
+
+        //biến const cho phép được cập nhật property ở loại object, array, function
+        //object
+        const exampleObject = {
+            name: 'hehe',
+            age: 18
+        }
+        exampleObject.name = "hohohoho";
+        console.log(exampleObject);
+        
+        //array
+        const exampleArray = [1, 2, 3, 4, 5]
+        exampleArray[1] = 20
+        console.log(exampleArray)
+        
+        //function
+        const exampleFunction = {
+            name: "hello",
+            age: 19
+        }
+
+        console.log(exampleFunction);
+
+        function updateExampleFunction() {
+            exampleFunction.name = "say good by"
+        }
+        updateExampleFunction();
+        console.log(exampleFunction);
+
+
+
+
+
+        
+    </script>
+
+
+</body>
+
+</html>

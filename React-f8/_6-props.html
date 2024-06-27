@@ -39,7 +39,55 @@
             )
         }
 
+        //props có thể truyền dữ liệu (data) từ component này sang component khác bằng parameters
+        function Car(props) {
+            return <h2> I am a { props.brand } ! </h2>
+        }
+        function Garage() {
+            return (
+                <>
+                    <h1>who live in my garage?</h1>
+                    <Car brand = "Ford" />
+                </>
+            );
+        }
+        //dạng cần truyền là biến (brandVariable) chứ không phải chuỗi
+        function Car2(props) {
+            return <h2> I am a { props.brand }</h2>
+        }
+        function Garage2() {
+            const brandVariable = 'mecedes';
+            return (
+                <>
+                    <h1>Who live in my garage?</h1>
+                    <Car2 brand = { brandVariable } />
+                </>
+            )
+        }
+        //truyền dạng object
+        function Car3(props) {
+            return <h2> I am a { props.brand.name } and color { props.brand.color } ! </h2>
+        }
+        function Garage3 () {
+            const brandObject = {
+                name: 'Civic',
+                color: 'red'
+            }
+
+            return (
+                <>
+                    <h1>who live in my garage?</h1>
+                    <Car3 brand = { brandObject } />
+                </>
+            )
+        }
+
+
         // index.js
+        //mở ẩn theo thứ tự để xem sự thay đổi
+        // ReactDOM.render(<Garage />, document.getElementById('root'));
+        // ReactDOM.render(<Garage2 />, document.getElementById('root'));
+        // ReactDOM.render(<Garage3 />, document.getElementById('root'));
         ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 </body>

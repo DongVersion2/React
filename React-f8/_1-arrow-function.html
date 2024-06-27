@@ -19,7 +19,7 @@
 
         //
         const sum2 = (a, b) => a + b;
-        console.log(sum2(2, 2));
+        console.log(sum2(2, 4));
 
         const sum3 = (a, b) => {
             return {
@@ -32,6 +32,43 @@
         const sum4 = (a, b) => ({a: a, b:b})
         console.log(sum4(3, 3));
         
+        // các loại function
+        //1. function declaration(khai báo hàm)
+        function myFunction () {
+            //code here
+        }
+        //2. function expression (biểu thức hàm)
+        var myFunction = function() {
+            //code here
+        }
+        //3. arrow function (hàm mũi tên)
+        const myFunction = () => {
+            //code here
+        }
+        //4. named function (hàm có tên)
+        function namedFunction() {
+            //code here
+        }
+        //5. anonymous function (hàm ẩn danh)
+        var myFunction = function() {
+            //code here
+        }
+        //6. immediately invoked function expression (LIFE)
+        (function() {
+            //code here
+        })();
+        //7. generation function (hàm sinh)
+        function* generationFunction() {
+            //code here
+        }
+        //8. callback function(hàm gọi lại)\
+        function myFunction(callback) {
+            //code here
+            callback(); 
+        }
+
+
+
     </script>
 </body>
 </html>

@@ -9,18 +9,16 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
+    <div id="root"></div>
+    <script type="text/babel">
 
-    phải export rồi mới import được
-    có loại import dạng default import
-    hoặc import dạng const import
+       const myArray = ['apple', 'banana', 'orange'];
 
-    modules	chia code nhỏ ra các phần riêng biệt		
-	export		
-        +	có thể xuất hàm hoặc biến	
-        +	Có hai loại xuất: Được đặt tên và Mặc định.	
-	import		
-        +	based import	
-        +	default import	
+       const myList = myArray.map((item) => <p> {item} </p>)
 
+       console.log(myList);
+       const root =document.getElementById('root')
+       ReactDOM.render(myList, root)
+    </script>
 </body>
 </html>

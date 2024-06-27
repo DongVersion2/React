@@ -24,6 +24,7 @@
         document.write(a, b, c);
         console.log(a, b, c);
 
+        console.log('với destructuringggggggggggggggggg')
         //cách mới với Destructuring
         var array2 = ['php', 'java', 'ruby', 'haha', 'hihi', 'hoho'];
         var [a2, b2, c2, ...rest] = array2;
@@ -45,12 +46,12 @@
         var { name: parentName, price, children: { name } } = course;//name là key, phải trùng với object
         console.log(parentName, price, name);
 
-        //khi có description thì nó lấy giá trị value có sẵn
+        //khi có description thì nó lấy giá trị value có sẵn, khó desception phía trên để nhận biết
         //ko có thì lấy giá trị mặc định (được giả định)
         var { description = 'default description' } = course;
         console.log(description);
 
-        // phân biệt, cái ni là toán tử rest đó
+        // phân biệt, cái này là toán tử rest đó
         //khi truyền như này nó ra kq là mảng
         function logger(...params) {
             console.log(params);

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        //dạng cơ bản
+        function Football () {
+            const shoot = () => {
+                return alert ('goalllllllllllllllllllll');
+            }
+            return (
+                <button onClick = { shoot }> Click me </button>
+            );
+        }
+
+        //truyền đối số
+        function Football2 () {
+
+            const shoot = (a) => {
+                return alert (a);
+            }
+
+            return (
+                <button onClick = { () => shoot( 'goal goal' ) } >click me</button>
+            )
+        }
+
+        // ReactDOM.render(<Football />, document.getElementById('root'));
+        ReactDOM.render(<Football2 />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
