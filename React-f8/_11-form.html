@@ -15,7 +15,7 @@
     <script type="text/babel">
 
         function MyForm() {
-
+            //useState không được định nghĩa, phải import vào
             const [inputs, setInputs] = useState({});
 
             const handleChange = (event) => {
@@ -43,12 +43,13 @@
                         <input
                             type="number"
                             name="age"
-                            value={handleChange}
+                            value={inputs.username || ""}
+                            onChange={handleChange}
                         />
                     </label>
                     <input type="submit" />
                 </form>
-            );
+            )
 
         }
         ReactDOM.render(<MyForm />, document.getElementById('root'));
