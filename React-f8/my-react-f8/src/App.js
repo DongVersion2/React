@@ -2,36 +2,69 @@ import "./App.css";
 import Content from "./hook/useContext/Content";
 import { useContext, useRef, useState } from "react";
 import { ThemeContext } from "./hook/useContext/ThemeContext";
+import ContentEffect from "./hook/useEffect/Content";
+import Content2 from "./hook/useEffect/Content2";
 
-//phần này cho useRef
-// useRef luôn trả vê 1 dạng Object
+// phần mouted , unmouted
+// function App() {
+//   const [show, setShow]  = useState(false);
+
+//   return(
+//     <>
+//     <h1 onClick = {() => setShow(!show) } >Tonggle</h1>
+//     {show && <ContentEffect />} 
+//     </>
+//   );
+// }
+
+// export default App;
+
+//phần effect cleanup timeout
+//ví dụ đếm ngược số
 function App() {
-
-  const [count, setCount] = useState(60)
-  let timeId = useRef();
-
-  const handleStart = () => {
-    timeId.current = setInterval(() => {
-      setCount(preCount => preCount - 1)
-    }, 1000)
-  }
-  const handleStop = () => {
-    clearInterval(timeId.current)
-
-  }
+const [show, setShow]  = useState(false);
 
   return(
     <>
-    <div style={{ padding: 50 }}>
-      <h1>{count}</h1>
-      <button onClick={ handleStart }>Start</button>
-      <button onClick={ handleStop }>Stop</button>
-    </div>
+    <h1 onClick = {() => setShow(!show) } >Tonggle</h1>
+    {show && <Content2 />} 
     </>
   );
 }
-
 export default App;
+
+
+
+
+//phần này cho useRef
+// useRef luôn trả vê 1 dạng Object
+// function App() {
+
+//   const [count, setCount] = useState(60)
+//   let timeId = useRef();
+
+//   const handleStart = () => {
+//     timeId.current = setInterval(() => {
+//       setCount(preCount => preCount - 1)
+//     }, 1000)
+//   }
+//   const handleStop = () => {
+//     clearInterval(timeId.current)
+
+//   }
+
+//   return(
+//     <>
+//     <div style={{ padding: 50 }}>
+//       <h1>{count}</h1>
+//       <button onClick={ handleStart }>Start</button>
+//       <button onClick={ handleStop }>Stop</button>
+//     </div>
+//     </>
+//   );
+// }
+
+// export default App;
 
 
 // phần useContext
