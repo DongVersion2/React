@@ -1,3 +1,11 @@
+//ví dụ về button "go to top"
+// 1. useEffect(callback) 
+// - gọi callback mỗi khi component re-render / đúng trong cả 3 trhop
+// - gọi callback sau khi component thêm element vào DOM 
+// 2. useEffect(callback, [])
+// - chỉ gọi callback 1 lần sau kih Component mouted
+// 3. useEffect(callback, [depencency])
+// - callback sẽ được gọi lại mỗi khi depencency thay đổi
 import { Component, useEffect, useState } from "react";
 
 const tabs = ['posts', 'comments', 'albums']
@@ -78,10 +86,3 @@ function ContentEffect() {
 
 export default ContentEffect;
 
-// 1. useEffect(callback) 
-// - gọi callback mỗi khi component re-render / đúng trong cả 3 trhop
-// - gọi callback sau khi component thêm element vào DOM 
-// 2. useEffect(callback, [])
-// - chỉ gọi callback 1 lần sau kih Component mouted
-// 3. useEffect(callback, [depencency])
-// - callback sẽ được gọi lại mỗi khi depencency thay đổi
