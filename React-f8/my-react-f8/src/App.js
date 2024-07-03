@@ -29,8 +29,8 @@ const initState = 0
 const UP_ACTION = 'up'
 const DOWN_ACTION = 'down'
 //reducer
-const reduce = (state, action) => {
-  console.log('reduce');
+const reducer = (state, action) => {
+  console.log('reducer running');
   switch(action) {
     case UP_ACTION:
       return state + 1
@@ -42,7 +42,7 @@ const reduce = (state, action) => {
 }
 
 function App() {
-  const [count, dispatch] = useReducer(reduce, initState)
+  const [count, dispatch] = useReducer(reducer, initState)
 
   return (
     <div style={{ padding: "0 20px" }}>
