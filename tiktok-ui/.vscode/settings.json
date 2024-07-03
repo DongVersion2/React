@@ -1,0 +1,5 @@
+//ý nghĩa mỗi khi lưu lại thì sử dụng prettier
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
