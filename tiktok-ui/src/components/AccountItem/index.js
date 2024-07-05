@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './AccountItem.modules.scss';
 
 const cx = classNames.bind(styles);
-function AccountItem({ children }) {
+function AccountItem() {
     return (
         <div className={cx('wrapper')}>
             <img
