@@ -5,6 +5,7 @@ import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
+import { useDebounce } from '~/hooks'
 import styles from './Search.module.scss';
 import { useEffect, useState, useRef } from 'react';
 
@@ -19,8 +20,12 @@ function Search() {
     const [showResult, setShowResult] = useState(true); //khởi tạo bằng true để visible mặc định bằng true
     //để sử dụng tính năng icon loading khi tìm kiếm
     const [loading, setLoading] = useState(false);
-
+    //để lưu biến bên ngoài, mục đích để xóa
     const inputRef = useRef();
+    //để sử dụng text cuối cùng, gửi request trong quá trình call api
+    //dùng "debounce" thay thế "searchValue"
+    //500 mili giây ở đây là thời gian chờ nhập text
+    const debounced = useDebounce(searchValue, 500);
 
     useEffect(() => {
         if (!searchValue.trim()) {
