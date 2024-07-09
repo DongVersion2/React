@@ -1,13 +1,18 @@
+//phần thư viện
+import { useEffect, useState, useRef } from 'react';
+import classNames from 'classnames/bind';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+
+//phần thư viện
+import * as searchServices from '~/apiServices/searchServices';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames/bind';
-import { useDebounce } from '~/hooks'
+import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
-import { useEffect, useState, useRef } from 'react';
+import { type } from '@testing-library/user-event/dist/type';
 
 const cx = classNames.bind(styles);
 
@@ -28,28 +33,40 @@ function Search() {
     const debounced = useDebounce(searchValue, 500);
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             //trim là để xóa khoảng trắng đầu tiên của input tìm kiếm
             setSearchResult([]);
             return;
         }
 
-        setLoading(true);
+        // setLoading(true);
+        const fetchApi = async () => {
+            setLoading(true);
 
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                searchValue,
-            )}&type=less`, //encodeURIComponent là hãm mã hóa kí tự đặc biệt
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
-    }, [searchValue]); //searchValue. khi người dùng gõ thì nó nhảy vào đây
+            const result = await searchServices.search(debounced);
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+
+        fetchApi();
+
+        //cách thông thường
+        //     fetch(
+        //         `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+        //             debounced,
+        //         )}&type=less`, //encodeURIComponent là hãm mã hóa kí tự đặc biệt
+        //     )
+        //         .then((res) => res.json())
+        //         .then((res) => {
+        //             setSearchResult(res.data);
+        //             setLoading(false);
+        //         })
+        //         .catch(() => {
+        //             setLoading(false);
+        //         });
+        // }, [debounced]); //searchValue. khi người dùng gõ thì nó nhảy vào đây
+    }, [debounced]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -59,6 +76,18 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false);
     };
+
+    //mục đích là ko cho người dùng nhập vào ô tìm kiếm
+    //với kí tự space(dấu cách) khoảng trống đầu tiên
+    const handleChange = (e) => {
+
+        const searchValue = e.target.value;
+        //phương thức !startsWith(' ') có nghĩa là k bắt đầu bằng 1 khoảng trắng
+        //và .trim() để xóa đi khoảng trắng ở đầu và cuối
+        if(!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    }
 
     return (
         <HeadlessTippy
@@ -84,14 +113,17 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
-                {!!searchValue && !loading && ( //có tồn tại text search thì mới hiển thị icon xóa
-                    <button className={cx('clear')} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
-                    </button>
-                )}
+                {!!searchValue &&
+                    !loading && ( //có tồn tại text search thì mới hiển thị icon xóa
+                        <button className={cx('clear')} onClick={handleClear}>
+                            <FontAwesomeIcon
+                                icon={faCircleXmark}
+                            ></FontAwesomeIcon>
+                        </button>
+                    )}
                 {loading && (
                     <FontAwesomeIcon
                         className={cx('loading')}
@@ -99,8 +131,7 @@ function Search() {
                     ></FontAwesomeIcon>
                 )}
 
-                {/* <Tippy content="Tìm kiếm" placement='right'> */}
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <SearchIcon />
                 </button>
             </div>

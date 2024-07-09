@@ -1,6 +1,5 @@
+//phần thư viện mặc định
 import classNames from 'classnames/bind';
-import styles from './Header.module.scss';
-import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
@@ -14,11 +13,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
-
+//phần tự thêm
+import routesConfig from '~/config/routes';
+import images from '~/assets/images';
+import styles from './Header.module.scss';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-// import MenuItem from '~';
 import { UploadIcon, MessageIcon, InboxIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
@@ -38,6 +40,166 @@ const MENU_ITEMS = [
                     type: 'language',
                     code: 'en',
                     title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
                 },
                 {
                     type: 'language',
@@ -102,9 +264,11 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
+
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Tiktok" />
+                    <Link to={routesConfig.home}><img src={images.logo} alt="Tiktok" /></Link>
                 </div>
+
                 {/* search */}
                 <Search />
                 {/* logic nếu login thì hiện này, k thì hiện kia */}
@@ -134,7 +298,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p9-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/872105b5155deff136f1e2673c4292a4.jpeg?lk3s=a5d48078&nonce=55819&refresh_token=18f601102e690fd0606a39cbf785576e&x-expires=1720400400&x-signature=ysGqNsUJtZJ6Qk8KFd4FE6gjgUY%3D&shp=a5d48078&shcp=81f88b70"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzKnVczvhjUoRqjdijqQzDtWdQsECC7CIaxQ&s"
                                 alt="David Đông"
                                 // fallback="https://icdn.24h.com.vn/upload/4-2023/images/2023-11-30/logo-24h-new-1701313347-933-widthheight.svg"
                             />
