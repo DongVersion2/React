@@ -11,6 +11,7 @@ PHẦN 1: HEADER
     * LEFT: lOGO
         - Chèn logo dạng svg
         - Linh logo cho trang chủ
+        - Thay thế logo trên thẻ title browser
 
     * CENTER: SEARCH
         - focus vào thẻ input mới hiện border
@@ -33,4 +34,9 @@ PHẦN 1: HEADER
             + chèn icon
             + tạo component chon cho "english", select ngôn ngữ
             + tạo border trên bằng thư viện
+            + tạo thanh cuộn trong submenu "english"
         
+Fix Bug
+    - Lỗi trong quá trình import thư viện Tippy
+    - Tối ưu thư mục và code
+    

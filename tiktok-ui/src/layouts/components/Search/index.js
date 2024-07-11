@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 
 //phần thư viện
-import * as searchServices from '~/apiServices/searchServices';
+import * as searchService from '~/services/searchService';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
@@ -43,7 +43,7 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await searchServices.search(debounced);
+            const result = await searchService.search(debounced);
             setSearchResult(result);
 
             setLoading(false);
@@ -80,62 +80,71 @@ function Search() {
     //mục đích là ko cho người dùng nhập vào ô tìm kiếm
     //với kí tự space(dấu cách) khoảng trống đầu tiên
     const handleChange = (e) => {
-
         const searchValue = e.target.value;
         //phương thức !startsWith(' ') có nghĩa là k bắt đầu bằng 1 khoảng trắng
         //và .trim() để xóa đi khoảng trắng ở đầu và cuối
-        if(!searchValue.startsWith(' ')) {
+        if (!searchValue.startsWith(' ')) {
             setSearchValue(searchValue);
         }
-    }
+    };
 
     return (
-        <HeadlessTippy
-            interactive
-            visible={showResult && searchResult.length > 0} //visiable thuộc tính quyết định có hiện hay ko
-            className={cx('search-result')}
-            render={(attrs) => (
-                <div className="box" tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>accounts</h4>
-                        {searchResult.map((result) => (
-                            <AccountItem key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            // onClickOutSide là 1 props của HeadlessTippy
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder="Search accounts and videos"
-                    spellCheck={false}
-                    onChange={handleChange}
-                    onFocus={() => setShowResult(true)}
-                />
-                {!!searchValue &&
-                    !loading && ( //có tồn tại text search thì mới hiển thị icon xóa
-                        <button className={cx('clear')} onClick={handleClear}>
-                            <FontAwesomeIcon
-                                icon={faCircleXmark}
-                            ></FontAwesomeIcon>
-                        </button>
-                    )}
-                {loading && (
-                    <FontAwesomeIcon
-                        className={cx('loading')}
-                        icon={faSpinner}
-                    ></FontAwesomeIcon>
+        //sử dụng div ôm ngoài để khỏi sinh ra lỗi thư viện tippy
+        <div>
+            <HeadlessTippy
+                interactive
+                appendTo={() => document.body}
+                visible={showResult && searchResult.length > 0} //visiable thuộc tính quyết định có hiện hay ko
+                className={cx('search-result')}
+                render={(attrs) => (
+                    <div className="box" tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>accounts</h4>
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
+                // onClickOutSide là 1 props của HeadlessTippy
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Search accounts and videos"
+                        spellCheck={false}
+                        onChange={handleChange}
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {!!searchValue &&
+                        !loading && ( //có tồn tại text search thì mới hiển thị icon xóa
+                            <button
+                                className={cx('clear')}
+                                onClick={handleClear}
+                            >
+                                <FontAwesomeIcon
+                                    icon={faCircleXmark}
+                                ></FontAwesomeIcon>
+                            </button>
+                        )}
+                    {loading && (
+                        <FontAwesomeIcon
+                            className={cx('loading')}
+                            icon={faSpinner}
+                        ></FontAwesomeIcon>
+                    )}
 
-                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-                    <SearchIcon />
-                </button>
-            </div>
-        </HeadlessTippy>
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={(e) => e.preventDefault()}
+                    >
+                        <SearchIcon />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 

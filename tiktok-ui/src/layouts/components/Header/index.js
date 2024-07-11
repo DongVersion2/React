@@ -16,7 +16,7 @@ import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
 
 //phần tự thêm
-import routesConfig from '~/config/routes';
+import config from '~/config';
 import images from '~/assets/images';
 import styles from './Header.module.scss';
 import Button from '~/components/Button';
@@ -266,7 +266,7 @@ function Header() {
             <div className={cx('inner')}>
 
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home}><img src={images.logo} alt="Tiktok" /></Link>
+                    <Link to={config.routes.home}><img src={images.logo} alt="Tiktok" /></Link>
                 </div>
 
                 {/* search */}
