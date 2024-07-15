@@ -1,9 +1,21 @@
+import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-function Menu({ children }) {
-    return <nav>{children}</nav>;
+import { NavLink } from 'react-router-dom'; //navlink hỗ trợ việc active của link
+import styles from './Menu.module.scss';
+
+const cx = classNames.bind(styles);
+function MenuItem({ title, to, icon }) {
+    return (
+        <NavLink className={(nav) => cx('menu-item', { active: nav.isActive })} to={to}>
+            {icon}
+            <span className={cx('title')}>{title}</span>
+        </NavLink>
+    );
 }
 
-Menu.propsType = {
-    children: PropTypes.node.isRequired,
+MenuItem.propsType = {
+    title: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+    icon: PropTypes.node.isRequired,
 };
-export default Menu;
+export default MenuItem;

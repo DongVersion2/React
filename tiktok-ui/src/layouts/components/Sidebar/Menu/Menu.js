@@ -1,3 +1,4 @@
+//PropTypes để kiểm tra dữ liệu của children
 import PropTypes from 'prop-types';
 function Menu({ children }) {
     return <nav>{children}</nav>;
